@@ -1,0 +1,62 @@
+:root {
+  color-scheme: light dark;
+  font-family: system-ui, sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.status {
+  font-size: 0.85rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+}
+
+.status.connected {
+  background: #16a34a33;
+  color: #16a34a;
+}
+
+.status.disconnected {
+  background: #dc262633;
+  color: #dc2626;
+}
+
+video {
+  width: 100%;
+  max-width: 960px;
+  background: #000;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.file-picker {
+  cursor: pointer;
+}
+
+.readout {
+  display: flex;
+  gap: 1rem;
+  font-variant-numeric: tabular-nums;
+}

@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>pace-cast</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>pace-cast</h1>
+    <p id="status" class="status disconnected">Desconectado</p>
+  </header>
+
+  <main>
+    <video id="video" controls preload="auto"></video>
+
+    <div class="controls">
+      <label class="file-picker">
+        Elegir video
+        <input id="file-input" type="file" accept="video/*" />
+      </label>
+
+      <div class="readout">
+        <span>Cadencia: <strong id="cadence">0</strong> pasos/min</span>
+        <span>Velocidad: <strong id="rate">1.00</strong>x</span>
+      </div>
+    </div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
