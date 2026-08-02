@@ -1,5 +1,10 @@
 const video = document.getElementById("video");
+const videoWrapper = document.getElementById("video-wrapper");
 const fileInput = document.getElementById("file-input");
+const urlForm = document.getElementById("url-form");
+const urlInput = document.getElementById("url-input");
+const listSelect = document.getElementById("list-select");
+const fullscreenBtn = document.getElementById("fullscreen-btn");
 const statusEl = document.getElementById("status");
 const cadenceEl = document.getElementById("cadence");
 const rateEl = document.getElementById("rate");
@@ -7,10 +12,41 @@ const rateEl = document.getElementById("rate");
 video.preservesPitch = true;
 video.mozPreservesPitch = true; // Firefox legacy
 
+function loadVideo(src) {
+  video.src = src;
+  video.play().catch(() => {});
+}
+
 fileInput.addEventListener("change", () => {
   const file = fileInput.files[0];
   if (!file) return;
-  video.src = URL.createObjectURL(file);
+  loadVideo(URL.createObjectURL(file));
+});
+
+urlForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const url = urlInput.value.trim();
+  if (!url) return;
+  loadVideo(url);
+});
+
+for (const { label, url } of VIDEO_LIBRARY) {
+  const option = document.createElement("option");
+  option.value = url;
+  option.textContent = label;
+  listSelect.appendChild(option);
+}
+
+listSelect.addEventListener("change", () => {
+  if (listSelect.value) loadVideo(listSelect.value);
+});
+
+fullscreenBtn.addEventListener("click", () => {
+  if (document.fullscreenElement) {
+    document.exitFullscreen();
+  } else {
+    videoWrapper.requestFullscreen();
+  }
 });
 
 function connect() {

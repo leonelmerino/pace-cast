@@ -44,7 +44,13 @@ Esto levanta un servidor WebSocket en `ws://localhost:8765`.
 
 ### 2. App web
 
-Abre `app/index.html` en el navegador (Chrome/Edge), elige un archivo de video local y comienza a marchar. La cadencia detectada (pasos/min) se traduce a `playbackRate`; sin movimiento el video se pausa.
+Abre `app/index.html` en el navegador (Chrome/Edge) y carga el video de una de estas tres formas:
+
+- **Archivo local**: boton "Elegir video".
+- **URL directa** (ej. archive.org): pega el link directo del archivo y presiona "Cargar URL". En archive.org, entra al item, ve a "Download options" y copia el link del archivo de video (formato `https://archive.org/download/<identifier>/<archivo>.mp4`), no la pagina del item. Estos links soportan HTTP Range requests, asi que el video puede buscar/hacer seek sin descargarse completo.
+- **Lista**: selector con videos de ejemplo predefinidos en `app/videos.js` (por ahora, un walkthrough de archive.org). Agrega entradas ahi para sumar mas videos a la lista.
+
+Luego comienza a marchar. La cadencia detectada (pasos/min) se traduce a `playbackRate`; sin movimiento el video se pausa.
 
 ## Como funciona
 
