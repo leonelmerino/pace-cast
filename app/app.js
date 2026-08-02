@@ -45,7 +45,10 @@ fullscreenBtn.addEventListener("click", () => {
   if (document.fullscreenElement) {
     document.exitFullscreen();
   } else {
-    videoWrapper.requestFullscreen();
+    videoWrapper.requestFullscreen().catch((err) => {
+      console.error("No se pudo entrar a pantalla completa:", err);
+      alert(`No se pudo entrar a pantalla completa: ${err.message}`);
+    });
   }
 });
 
